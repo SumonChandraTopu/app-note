@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import { auth } from "../firebase/Firebase";
 
 const Login = () => {
@@ -16,6 +16,8 @@ const Login = () => {
   const [buttonDisable, setButtonDisable] = useState(false);
 
   const navigate = useNavigate();
+
+  // 
   const handleLogIn = (e) => {
     e.preventDefault();
     if (!values.email || !values.password) {
@@ -37,6 +39,20 @@ const Login = () => {
         setError(err.message);
       });
     setError("");
+  };
+
+   // Google Authentication
+
+   const handleGoogleSigIn = (e) => {
+    e.preventDefault();
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider).then((result) => {
+      navigate("/");
+    })
+    .catch(err => {
+      setError(err.message)
+    })
+    setError("")
   };
 
   // Password show & hide
@@ -115,7 +131,7 @@ const Login = () => {
           </div>
         </form>
         <div className="login-icon d-flex  py-3 align-items-center justify-content-center gap-4">
-          <button class="fa-brands fa-google p-2 rounded-circle border-0"></button>
+          <button onClick={handleGoogleSigIn} class="fa-brands fa-google p-2 rounded-circle border-0"></button>
           <button class="fa-brands fa-facebook p-2 rounded-circle border-0"></button>
         </div>
       </div>
