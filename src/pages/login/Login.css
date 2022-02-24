@@ -1,0 +1,55 @@
+
+
+
+
+.login-container{
+    background-color: #1e1e1e;
+    border-radius: 1rem;
+}
+
+.login-input{
+    background-color: #272727;
+    border: none;
+    color: #628e63;
+}
+
+.login-input:focus{
+    background-color: #272727 !important;
+    color: #628e63;
+}
+
+.login-input i{
+    background-color: #b38484 !important;
+}
+
+
+.fa-solid{
+    position: absolute;
+    top: 2.6rem;
+    right: 0.8rem;
+}
+
+
+.error-message p{
+    color: #ff5a5a;
+    
+}
+
+.btn:disabled{
+    opacity: 50% !important;
+}
+
+@media only screen and (max-width: 668px) {
+    .login-container{
+        width: 90% !important;
+    }
+}
+@media only screen and (max-width: 998px) {
+    .login-container{
+        width: 40% !important;
+    }
+}
+
+
+
+
